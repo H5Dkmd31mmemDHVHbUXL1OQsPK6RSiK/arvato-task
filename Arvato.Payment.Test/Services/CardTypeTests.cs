@@ -1,4 +1,3 @@
-using Arvato.Payment.Core.Entities;
 using Arvato.Payment.Core.Enum;
 using Arvato.Payment.Core.Services;
 using Arvato.Payment.Test.Helpers;
@@ -48,7 +47,7 @@ public class CardTypeTest
     public void Incorrect_Card_Should_Be_Card_Type_Unknown()
     {
         var cardInfo = CardHelper.GetCard(CardType.MasterCard);
-        
+
         //random card number
         cardInfo.CardNumber = "999781151978097890651111111111";
 
