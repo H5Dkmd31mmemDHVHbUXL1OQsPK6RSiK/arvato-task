@@ -3,7 +3,7 @@ using Arvato.Payment.Core.Enum;
 
 namespace Arvato.Payment.Test.Helpers;
 
-public static class CardHelper
+public static class TestCardHelper
 {
     public static PaymentInfo GetCard(CardType type)
     {

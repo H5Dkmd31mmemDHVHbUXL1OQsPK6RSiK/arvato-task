@@ -11,34 +11,33 @@ namespace Arvato.Payment.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class PaymentController : Controller
+public class CardController : Controller
 {
     private readonly ICardService _cardService;
     private readonly ICardValidatorService _cardValidatorService;
     private readonly IMapper _mapper;
 
-    public PaymentController(ICardService cardService, IMapper mapper, ICardValidatorService cardValidatorService)
+    public CardController(ICardService cardService, IMapper mapper, ICardValidatorService cardValidatorService)
     {
         _cardService = cardService;
         _mapper = mapper;
         _cardValidatorService = cardValidatorService;
     }
 
-    [HttpPost("/card/validate")]
+    [HttpPost("validate")]
     [SwaggerOperation(Summary = "Endpoint for validating card and getting its' type")]
     [ProducesResponseType(200, Type = typeof(ValidationResultDto))]
     [ProducesResponseType(400, Type = typeof(ErrorResponseModel))]
     [ProducesResponseType(500, Type = typeof(ErrorResponseModel))]
-    public IActionResult Post([FromBody, Required] PaymentInfoDto infoDto)
+    public IActionResult ValidateCard([FromBody] [Required] PaymentInfoDto infoDto)
     {
         var mapped = _mapper.Map<PaymentInfo>(infoDto);
         _cardValidatorService.ValidateCard(mapped);
         _cardService.SetCardType(mapped);
-        
+
         return Ok(new ValidationResultDto
         {
             CardType = mapped.CardType.ToString()
         });
-        
-    } 
+    }
 }

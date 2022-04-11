@@ -28,10 +28,10 @@ public class CardValidatorService : ICardValidatorService
 
         if (!ValidateOwner(paymentInfo))
         {
-            exceptions.Add(nameof(PaymentInfo.CVC), new InvalidCardException("Invalid CVC!"));
+            exceptions.Add(nameof(PaymentInfo.CardOwner), new InvalidCardException("Invalid card owner!"));
         }
-        
-        if (!ValidateCvc(paymentInfo))
+
+        if (!ValidateCvc(paymentInfo, cardType))
         {
             exceptions.Add(nameof(PaymentInfo.CVC), new InvalidCardException("Invalid CVC!"));
         }
@@ -40,7 +40,7 @@ public class CardValidatorService : ICardValidatorService
         {
             exceptions.Add(nameof(PaymentInfo.ExpirationDate), new InvalidCardException("Expired card!"));
         }
-        
+
         if (!ValidateCardNumberLuhn(paymentInfo))
         {
             exceptions.Add(nameof(PaymentInfo.CardNumber), new InvalidCardException("Invalid card checksum!"));
@@ -59,13 +59,12 @@ public class CardValidatorService : ICardValidatorService
         return StringHelpers.IsAllAlphabetic(paymentInfo.CardOwner);
     }
 
-    public static bool ValidateCvc(PaymentInfo paymentInfo)
+    public static bool ValidateCvc(PaymentInfo paymentInfo, CardType? cardType = null)
     {
-        var isEmpty = string.IsNullOrWhiteSpace(paymentInfo.CVC);
-        var isAllNumeric = StringHelpers.IsAllNumeric(paymentInfo.CVC);
-        if (isEmpty || !isAllNumeric) return false;
+        if (!StringHelpers.IsAllNumeric(paymentInfo.CVC)) return false;
 
-        var lengthResult = paymentInfo.CardType switch
+        var type = cardType ?? paymentInfo.CardType;
+        var lengthResult = type switch
         {
             CardType.Visa or CardType.MasterCard => paymentInfo.CVC!.Length == 3,
             CardType.AmericanExpress => paymentInfo.CVC!.Length == 4,
@@ -82,7 +81,7 @@ public class CardValidatorService : ICardValidatorService
 
     public static bool ValidateCardNumberLuhn(PaymentInfo paymentInfo)
     {
-        var cardNumber = paymentInfo.CardNumber;
+        var cardNumber = StringHelpers.ReplaceWhitespace(paymentInfo.CardNumber!);
         var cardNumberLength = cardNumber!.Length;
 
         var nSum = 0;

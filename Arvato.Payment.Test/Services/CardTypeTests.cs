@@ -16,7 +16,7 @@ public class CardTypeTest
     [Fact]
     public void Correct_Visa_Card_Should_Be_Card_Type_Visa()
     {
-        var cardInfo = CardHelper.GetCard(CardType.Visa);
+        var cardInfo = TestCardHelper.GetCard(CardType.Visa);
 
         _cardService.SetCardType(cardInfo);
 
@@ -26,7 +26,7 @@ public class CardTypeTest
     [Fact]
     public void Correct_Amex_Card_Should_Be_Card_Type_Amex()
     {
-        var cardInfo = CardHelper.GetCard(CardType.AmericanExpress);
+        var cardInfo = TestCardHelper.GetCard(CardType.AmericanExpress);
 
         _cardService.SetCardType(cardInfo);
 
@@ -36,7 +36,7 @@ public class CardTypeTest
     [Fact]
     public void Correct_Master_Card_Card_Should_Be_Card_Type_Master_Card()
     {
-        var cardInfo = CardHelper.GetCard(CardType.MasterCard);
+        var cardInfo = TestCardHelper.GetCard(CardType.MasterCard);
 
         _cardService.SetCardType(cardInfo);
 
@@ -46,7 +46,7 @@ public class CardTypeTest
     [Fact]
     public void Incorrect_Card_Should_Be_Card_Type_Unknown()
     {
-        var cardInfo = CardHelper.GetCard(CardType.MasterCard);
+        var cardInfo = TestCardHelper.GetCard(CardType.MasterCard);
 
         //random card number
         cardInfo.CardNumber = "999781151978097890651111111111";

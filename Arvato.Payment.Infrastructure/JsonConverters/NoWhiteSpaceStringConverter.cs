@@ -1,8 +1,9 @@
+using Arvato.Payment.Core.Helpers;
 using Newtonsoft.Json;
 
 namespace Arvato.Payment.Infrastrcute.JsonConverters;
 
-public class TrimmedStringConverter : JsonConverter
+public class NoWhiteSpaceStringConverter : JsonConverter
 {
     public override bool CanRead => true;
     public override bool CanWrite => false;
@@ -13,8 +14,9 @@ public class TrimmedStringConverter : JsonConverter
         throw new NotImplementedException();
     }
 
-    public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+    public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue,
+        JsonSerializer serializer)
     {
-        return ((string)reader.Value)?.Trim();
+        return StringHelpers.ReplaceWhitespace((string)reader.Value!);
     }
 }

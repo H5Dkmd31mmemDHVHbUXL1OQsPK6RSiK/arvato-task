@@ -7,12 +7,14 @@ namespace Arvato.Payment.Api.Models.V1;
 public class PaymentInfoDto
 {
     [Required]
-    [JsonConverter(typeof(TrimmedStringConverter))]
-    public string CardNumber { get; set; }
+    [JsonConverter(typeof(NoWhiteSpaceStringConverter))]
+    public string CardNumber { get; set; } = null!;
+
     [Required]
-    public string CVC { get; set; }
-    [Required]
-    public string CardOwner { get; set; }
-    [Required]
-    public DateTime ExpirationDate { get; set; }
+    [JsonConverter(typeof(NoWhiteSpaceStringConverter))]
+    public string CVC { get; set; } = null!;
+
+    [Required] public string CardOwner { get; set; } = null!;
+
+    [Required] public DateTime ExpirationDate { get; set; }
 }
