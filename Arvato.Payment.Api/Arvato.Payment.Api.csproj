@@ -21,7 +21,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Arvato.Payment.Core\Arvato.Payment.Core.csproj" />
-      <ProjectReference Include="..\Arvato.Payment.Infrastrcute\Arvato.Payment.Infrastrcute.csproj" />
+      <ProjectReference Include="..\Arvato.Payment.Infrastructure\Arvato.Payment.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>

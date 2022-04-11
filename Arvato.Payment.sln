@@ -4,14 +4,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arvato.Payment.Api", "Arvat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{8FD01882-7750-4D0F-A890-0AB5B15B4D2C}"
 	ProjectSection(SolutionItems) = preProject
-		..\README.md = ..\README.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arvato.Payment.Core", "Arvato.Payment.Core\Arvato.Payment.Core.csproj", "{EBFDAE6C-0B21-4215-8647-6CE62980C887}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arvato.Payment.Test", "Arvato.Payment.Test\Arvato.Payment.Test.csproj", "{1539B706-7B58-495B-B60D-3E64C487E2F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arvato.Payment.Infrastrcute", "Arvato.Payment.Infrastrcute\Arvato.Payment.Infrastrcute.csproj", "{ED1333CF-7593-4437-BC6D-A0C44638F22F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arvato.Payment.Infrastructure", "Arvato.Payment.Infrastructure\Arvato.Payment.Infrastructure.csproj", "{ED1333CF-7593-4437-BC6D-A0C44638F22F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

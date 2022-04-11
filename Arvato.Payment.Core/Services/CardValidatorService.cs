@@ -67,8 +67,8 @@ public class CardValidatorService : ICardValidatorService
 
         var lengthResult = paymentInfo.CardType switch
         {
-            CardType.Visa or CardType.MasterCard => paymentInfo.CVC.Length == 3,
-            CardType.AmericanExpress => paymentInfo.CVC.Length == 4,
+            CardType.Visa or CardType.MasterCard => paymentInfo.CVC!.Length == 3,
+            CardType.AmericanExpress => paymentInfo.CVC!.Length == 4,
             _ => false
         };
 
